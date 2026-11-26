@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090909" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=20261122-logo" />
+    <title>АлАвто — шины и диски</title>
+    <link rel="stylesheet" href="styles.css?v=20261126-branch-switch" />
+  </head>
+  <body>
+    <div class="japanese-backdrop" aria-hidden="true" lang="ja">
+      <span style="--x:2%;--y:11%;--size:1.15;--tilt:-23deg;--depth:.095">疾</span>
+      <span style="--x:49%;--y:1%;--size:.62;--tilt:12deg;--depth:.055">道</span>
+      <span style="--x:93%;--y:14%;--size:1.22;--tilt:16deg;--depth:.085">風</span>
+      <span style="--x:8%;--y:54%;--size:.84;--tilt:8deg;--depth:.07">走</span>
+      <span style="--x:71%;--y:39%;--size:.69;--tilt:-15deg;--depth:.052">速</span>
+      <span style="--x:102%;--y:61%;--size:1.18;--tilt:-13deg;--depth:.09">輪</span>
+      <span style="--x:37%;--y:74%;--size:.76;--tilt:18deg;--depth:.058">軌</span>
+      <span style="--x:0%;--y:97%;--size:1.27;--tilt:-17deg;--depth:.08">峠</span>
+      <span style="--x:76%;--y:106%;--size:1.2;--tilt:9deg;--depth:.075">影</span>
+      <div class="background-orbits">
+        <i class="orbit orbit-red orbit-sweep"></i>
+        <i class="orbit orbit-gold orbit-crossing"></i>
+        <i class="orbit orbit-red orbit-edge"></i>
+      </div>
+    </div>
+    <div class="app-message" id="appMessage" role="status"></div>
+    <div class="site-shell" id="publicSite">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="#catalog" aria-label="АлАвто — каталог">
+            <span class="brand-category">Шины, диски, сервис</span>
+            <img src="assets/logo.png" alt="АлАвто" width="2203" height="714" />
+            <span class="brand-yokohama">Yokohama</span>
+          </a>
+          <nav class="public-nav" aria-label="Основная навигация">
+            <button type="button" class="nav-link active" data-view="tires" aria-pressed="true">Шины</button>
+            <button type="button" class="nav-link" data-view="wheels" aria-pressed="false">Диски</button>
+          </nav>
+          <button type="button" class="employee-entry" id="employeeEntry"><span aria-hidden="true">→</span> Вход для сотрудников</button>
+        </div>
+      </header>
+
+      <main id="catalog">
+        <section class="catalog-section" aria-labelledby="catalogTitle">
+          <div class="section-heading">
+            <h1 id="catalogTitle">Шины</h1>
+            <span class="result-count" id="resultCount" aria-live="polite"></span>
+          </div>
+
+          <form class="filter-panel" id="filterForm">
+            <div class="filter-topline">
+              <button class="reset-button" type="reset" aria-label="Сбросить фильтры" title="Сбросить фильтры"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+            </div>
+            <div class="filter-grid primary-filters" id="primaryFilters"></div>
+            <button class="show-button" type="submit" id="showProducts" disabled>Показать</button>
+            <div class="tire-preferences" id="tirePreferences" hidden>
+              <label><input type="checkbox" name="min_stock" value="4" checked> От 4 шт.</label>
+              <label><input type="checkbox" id="tirePriceOrder" checked> Сначала дешевле</label>
+            </div>
+            <label class="tire-pair-card" id="tirePairCard" hidden>
+              <input type="checkbox" id="includeTirePair">
+              <span><strong>Искать также <span id="tirePairSize"></span></strong><small>Разноширокий подбор</small></span>
+            </label>
+            <details class="advanced-filters">
+              <summary>Дополнительные параметры</summary>
+              <div class="filter-grid secondary-filters" id="secondaryFilters"></div>
+            </details>
+          </form>
+
+          <div class="catalog-sources" role="group" aria-label="Варианты наличия"><button type="button" data-source="" aria-pressed="true">Все варианты</button><button type="button" data-source="1" aria-pressed="false">Вариант 1</button><button type="button" data-source="2" aria-pressed="false">Вариант 2</button></div>
+          <div class="product-grid" id="productGrid" aria-live="polite"></div>
+          <div class="catalog-sources" role="group" aria-label="Варианты наличия"><button type="button" data-source="" aria-pressed="true">Все варианты</button><button type="button" data-source="1" aria-pressed="false">Вариант 1</button><button type="button" data-source="2" aria-pressed="false">Вариант 2</button></div>
+          <nav class="catalog-pagination" id="catalogPagination" aria-label="Страницы каталога" hidden>
+            <button type="button" id="previousCatalogPage">← Назад</button>
+            <span id="catalogPageStatus" aria-live="polite"></span>
+            <button type="button" id="nextCatalogPage">Далее →</button>
+          </nav>
+        </section>
+        <section class="contacts" id="contacts" aria-labelledby="contactsTitle">
+          <h2 id="contactsTitle">Контакты</h2>
+          <p>Телефоны: <a href="tel:+78652580641">+7 (8652) 58‑06‑41</a>, <a href="tel:+79383555296">+7 938 355‑52‑96</a></p>
+          <p>Email: <a href="mailto:alldisk@bk.ru">alldisk@bk.ru</a></p>
+          <p>WhatsApp: <a href="https://wa.me/79624276248">+7 962 427‑62‑48</a></p>
+          <p>Часы работы: с 9:00 до 19:00</p>
+        </section>
+      </main>
+    </div>
+
+    <div class="employee-drawer" id="employeeDrawer" hidden>
+      <header class="topbar">
+        <div class="topbar-inner workspace-topbar">
+          <button type="button" class="brand workspace-brand" id="workspaceBrand" aria-label="АлАвто — вернуться в каталог">
+            <span class="brand-category">Шины, диски, сервис</span>
+            <img src="assets/logo.png" alt="АлАвто" width="2203" height="714" />
+            <span class="brand-yokohama">Yokohama</span>
+          </button>
+          <nav class="public-nav employee-tabs" aria-label="Разделы кабинета"></nav>
+          <button type="button" class="employee-entry" id="closeDrawer">← В каталог</button>
+        </div>
+      </header>
+      <main class="workspace-main">
+        <div class="role-switch" aria-label="Доступ сотрудника"></div>
+        <div class="drawer-content" id="employeeContent"></div>
+      </main>
+    </div>
+
+    <template id="tireCardTemplate">
+      <article class="product-card tire-card">
+        <div class="product-visual">
+          <button type="button" class="product-photo-button" hidden><span class="product-photo-frame"><img class="product-image" alt="" /></span><span class="photo-zoom-icon" aria-hidden="true">＋</span></button>
+          <span class="no-image" role="img" aria-label="АлАвто — фотография товара отсутствует">
+            <img class="no-image-logo" src="/assets/logo.png" width="2203" height="714" alt="" />
+            <small>Фото товара отсутствует</small>
+          </span>
+        </div>
+        <div class="card-line"><h3></h3><span class="season"></span></div>
+        <p class="product-name"></p>
+        <div class="card-meta"><span>Индекс: <b class="load-index"></b></span><span>Остаток: <b class="stock"></b></span></div>
+        <div class="card-bottom"><strong class="price"></strong><span>₽ / шт</span><button class="order-button">Заказать</button></div>
+      </article>
+    </template>
+
+    <template id="wheelCardTemplate">
+      <article class="product-card wheel-card">
+        <div class="product-visual">
+          <button type="button" class="product-photo-button" hidden><span class="product-photo-frame"><img class="product-image" alt="" /></span><span class="photo-zoom-icon" aria-hidden="true">＋</span></button>
+          <span class="no-image" role="img" aria-label="АлАвто — фотография товара отсутствует">
+            <img class="no-image-logo" src="/assets/logo.png" width="2203" height="714" alt="" />
+            <small>Фото товара отсутствует</small>
+          </span>
+        </div>
+        <div class="card-line"><h3></h3><span class="diameter"></span></div>
+        <p class="product-name"></p>
+        <div class="card-meta"><span class="bolt"></span><span>Остаток: <b class="stock"></b></span></div>
+        <div class="card-bottom"><strong class="price"></strong><span>₽ / шт</span><button class="order-button">Заказать</button></div>
+      </article>
+    </template>
+
+    <dialog class="photo-dialog" id="photoDialog" aria-labelledby="photoTitle">
+      <figure class="photo-frame">
+        <form method="dialog"><button class="photo-close" type="submit" aria-label="Закрыть фото" autofocus>×</button></form>
+        <div class="photo-stage"><img class="photo-full" id="photoFull" alt="" /></div>
+        <figcaption id="photoTitle"></figcaption>
+      </figure>
+    </dialog>
+    <script src="wheel-fit.js?v=20261122-live"></script>
+    <script src="app.js?v=20261126-branch-switch"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

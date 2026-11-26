@@ -1,0 +1,13 @@
+﻿fastapi==0.165.0
+starlette==1.10.0
+uvicorn[standard]==0.54.0
+SQLAlchemy==2.0.58
+psycopg[binary]==3.3.9
+alembic==1.20.1
+pydantic-settings==2.16.3
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.9.5
+bcrypt==5.0.0
+python-multipart==0.0.34
+openpyxl==3.1.5
+xlrd==2.0.2
